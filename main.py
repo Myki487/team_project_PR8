@@ -60,12 +60,7 @@ def main_discussion():
     
     # Додавання блоку Годун
     full_content += get_content_u1(surname_u1, question_u1)
-    
-    # Виведення у термінал
-    print("="*50)
-    print("Обговорення: Робота з файлами у Python\n")
-    print("---------------------------------------------------\n")
-    print(full_content)
+
     
     # Запис у файлу усього
     write_consolidated_file(full_content)
