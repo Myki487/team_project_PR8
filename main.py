@@ -34,6 +34,18 @@ def get_content_u2(surname: str, answer: str, question: str) -> str:
     )
     return content
 
+# ✅ Функція учасника №3 (ДОДАНО)
+def get_content_u3(surname: str, answer: str, question: str) -> str:
+    content = (
+        f"Член команди №3 (Прізвище: {surname}):\n"
+        "  -> Відповідь на питання Учасника 2:\n"
+        f"     {answer}\n\n"
+        "  -> Запитання до Учасника 4:\n"
+        f"     {question}\n\n"
+        "---------------------------------------------------\n"
+    )
+    return content
+
 # ✅ Функція допису в файл (режим "a")
 def append_user_block(content: str):
     try:
@@ -54,6 +66,11 @@ def main_discussion():
     surname_u2 = "Бондар"
     answer_u2 = "Режим 'a' додає дані у файл, не видаляючи попередній вміст."
     question_u2 = "Чим відрізняється метод write() від writelines() у Python?\n"
+
+    # Член команди №3 (Письмак)
+    surname_u3 = "Письмак"
+    answer_u3 = "Метод write() записує один рядок (string), а writelines() приймає список рядків і записує їх послідовно без автоматичного додавання символів нового рядка."
+    question_u3 = "Який метод використовується для читання всього вмісту файлу в Python?\n"
     
     # Створюємо пустий рядок для файлу
     full_content = ""
@@ -68,6 +85,10 @@ def main_discussion():
     # Додати блок учасника №2
     block_u2 = get_content_u2(surname_u2, answer_u2, question_u2)
     append_user_block(block_u2)
+
+    # Додати блок учасника №3
+    block_u3 = get_content_u3(surname_u3, answer_u3, question_u3)
+    append_user_block(block_u3)
 
     # Показати результат роботи після запису
     print("\n=== Поточний вміст файлу ===\n")
