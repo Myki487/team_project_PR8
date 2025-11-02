@@ -10,7 +10,7 @@ def get_content_u1(surname: str, question: str) -> str:
     )
     return content
     
-# Функція консолідації тім-ліда Годун (записує файл з нуля в режимі w)
+# Функція консолідації тім-ліда Годун
 def write_consolidated_file(full_content: str):
     try:
         with open(FILE_NAME, 'w', encoding='utf-8') as f:
@@ -22,7 +22,7 @@ def write_consolidated_file(full_content: str):
         print(f"Невідома помилка при записі файлу: {e}")
 
 
-# ✅ Новий блок: Функція учасника №2 (режим 'a')
+# ✅ Функція учасника №2 (ДОДАНО)
 def get_content_u2(surname: str, answer: str, question: str) -> str:
     content = (
         f"Член команди №2 (Прізвище: {surname}):\n"
@@ -34,43 +34,50 @@ def get_content_u2(surname: str, answer: str, question: str) -> str:
     )
     return content
 
+# ✅ Функція допису в файл (режим "a")
 def append_user_block(content: str):
     try:
-        with open(FILE_NAME, 'a', encoding='utf-8') as f:  # режим APPEND
+        with open(FILE_NAME, 'a', encoding='utf-8') as f:
             f.write(content)
         print("Блок учасника успішно додано (режим 'a').")
     except Exception as e:
         print(f"Помилка при додаванні блоку: {e}")
 
 
-# Головна функція (Спільна робота):
 def main_discussion():
-    # Дані тім-ліда (Учасник 1)
+    # Дані учасників:
+    # Член команди №1 (Годун)
     surname_u1 = "Годун"
-    question_u1 = "Яка основна відмінність між режимами 'r', 'w' та 'a' при відкритті файлів у Python? Наведіть приклад використання режиму 'a' (append)."
+    question_u1 = "Яка основна відмінність між режимами 'r', 'w' та 'a' при відкритті файлів у Python? \n Наведіть приклад використання режиму 'a' (append).\n"
 
-    # Дані Учасника №2
+    # Член команди №2 (Бондар)
     surname_u2 = "Бондар"
-    answer_u2 = "Режим 'a' дозволяє додавати дані у файл, не видаляючи попередній вміст."
-    question_u2 = "Чим відрізняється метод write() від writelines() у Python?"
-
+    answer_u2 = "Режим 'a' додає дані у файл, не видаляючи попередній вміст."
+    question_u2 = "Чим відрізняється метод write() від writelines() у Python?\n"
+    
     # Створюємо пустий рядок для файлу
     full_content = ""
-
-    # Додавання блоку Годун (створення файлу)
+    
+    # Додавання блоку Годун
     full_content += get_content_u1(surname_u1, question_u1)
-
+    
+    # Виведення у термінал
     print("="*50)
     print("Обговорення: Робота з файлами у Python\n")
     print("---------------------------------------------------\n")
     print(full_content)
-
-    # ✅ 1) Тім-лід створює файл
+    
+    # Запис у файлу усього
     write_consolidated_file(full_content)
 
-    # ✅ 2) Учасник №2 додає свій блок в режимі "a"
+    # Додати блок учасника №2
     block_u2 = get_content_u2(surname_u2, answer_u2, question_u2)
     append_user_block(block_u2)
+
+    # Показати результат роботи після запису
+    print("\n=== Поточний вміст файлу ===\n")
+    with open(FILE_NAME, 'r', encoding='utf-8') as f:
+        print(f.read())
 
 
 if __name__ == "__main__":
