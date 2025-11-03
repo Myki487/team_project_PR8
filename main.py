@@ -46,6 +46,17 @@ def get_content_u3(surname: str, answer: str, question: str) -> str:
     )
     return content
 
+def get_content_u4(surname: str, answer: str, question: str) -> str:
+    content = (
+        f"Член команди №4 (Прізвище: {surname}):\n"
+        "  -> Відповідь на питання Учасника 3:\n"
+        f"     {answer}\n\n"
+        "  -> Запитання до Учасника 5:\n"
+        f"     {question}\n\n"
+        "---------------------------------------------------\n"
+    )
+    return content
+
 # ✅ Функція допису в файл (режим "a")
 def append_user_block(content: str):
     try:
@@ -71,7 +82,12 @@ def main_discussion():
     surname_u3 = "Письмак"
     answer_u3 = "Метод write() записує один рядок (string), а writelines() приймає список рядків і записує їх послідовно без автоматичного додавання символів нового рядка."
     question_u3 = "Який метод використовується для читання всього вмісту файлу в Python?\n"
-    
+
+    # Дані Учасника №4 (Лях)
+    surname_u4 = "Лях"
+    answer_u4 = "Для читання всього вмісту файлу як одного великого рядка (string) використовується метод read(). Якщо потрібно прочитати вміст у вигляді списку рядків, використовується метод readlines()."
+    question_u4 = "Поясніть, для чого використовується конструкція 'with open(...) as f:' при роботі з файлами у Python.\n"
+
     # Створюємо пустий рядок для файлу
     full_content = ""
     
@@ -89,6 +105,10 @@ def main_discussion():
     # Додати блок учасника №3
     block_u3 = get_content_u3(surname_u3, answer_u3, question_u3)
     append_user_block(block_u3)
+
+    # Додати блок учасника №4 (Лях)
+    block_u4 = get_content_u4(surname_u4, answer_u4, question_u4)
+    append_user_block(block_u4)
 
     # Показати результат роботи після запису
     print("\n=== Поточний вміст файлу ===\n")
