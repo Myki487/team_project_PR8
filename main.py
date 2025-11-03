@@ -10,7 +10,7 @@ def get_content_u1(surname: str, question: str) -> str:
     )
     return content
     
-# Функція консолідації тім-ліда Годун
+# Функція консолідації учасника №1 (тім-лід Годун)
 def write_consolidated_file(full_content: str):
     try:
         with open(FILE_NAME, 'w', encoding='utf-8') as f:
@@ -22,7 +22,7 @@ def write_consolidated_file(full_content: str):
         print(f"Невідома помилка при записі файлу: {e}")
 
 
-# ✅ Функція учасника №2 (ДОДАНО)
+# Функція учасника №2 (Бондар)
 def get_content_u2(surname: str, answer: str, question: str) -> str:
     content = (
         f"Член команди №2 (Прізвище: {surname}):\n"
@@ -34,7 +34,7 @@ def get_content_u2(surname: str, answer: str, question: str) -> str:
     )
     return content
 
-# ✅ Функція учасника №3 (ДОДАНО)
+# Функція учасника №3 (Письмак)
 def get_content_u3(surname: str, answer: str, question: str) -> str:
     content = (
         f"Член команди №3 (Прізвище: {surname}):\n"
@@ -46,6 +46,7 @@ def get_content_u3(surname: str, answer: str, question: str) -> str:
     )
     return content
 
+# Функція учасника №4 (Лях)
 def get_content_u4(surname: str, answer: str, question: str) -> str:
     content = (
         f"Член команди №4 (Прізвище: {surname}):\n"
@@ -57,7 +58,7 @@ def get_content_u4(surname: str, answer: str, question: str) -> str:
     )
     return content
 
-# ✅ Функція допису в файл (режим "a")
+# Функція допису в файл (режим "a")
 def append_user_block(content: str):
     try:
         with open(FILE_NAME, 'a', encoding='utf-8') as f:
@@ -91,18 +92,18 @@ def main_discussion():
     # Створюємо пустий рядок для файлу
     full_content = ""
     
-    # Додавання блоку Годун
+    # Додавання блоку учасника №1 (Годун)
     full_content += get_content_u1(surname_u1, question_u1)
 
     
     # Запис у файлу усього
     write_consolidated_file(full_content)
 
-    # Додати блок учасника №2
+    # Додати блок учасника №2 (Бондар)
     block_u2 = get_content_u2(surname_u2, answer_u2, question_u2)
     append_user_block(block_u2)
 
-    # Додати блок учасника №3
+    # Додати блок учасника №3 (Письмак)
     block_u3 = get_content_u3(surname_u3, answer_u3, question_u3)
     append_user_block(block_u3)
 
